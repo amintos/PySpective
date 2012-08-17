@@ -106,7 +106,7 @@ class TestResult(object):
 
     def enter_case(self, case):
         """A test case of a feature is being executed"""
-        print "   " + case.how_to_behave
+        print "   " + case.how_to_behave + '.'
 
 
     def show_target(self, target):

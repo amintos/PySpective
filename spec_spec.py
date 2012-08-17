@@ -29,7 +29,7 @@ class MockResult(object):
 result = MockResult()
 
 # ------------------------------------------------------------------------------
-# Define meta-assertions over an assertion
+# Define meta-expectations over an expectation
 
 def succeed(self):
     self.do_assertion(self.subject.done and self.subject.success, "succeed")
@@ -43,6 +43,39 @@ Target.succeed = succeed
 Target.fail = fail
 
 # ------------------------------------------------------------------------------
+# The example from the readme file
+print "START OF EXAMPLE"
+
+# the unit under test
+def factorial(n):
+    if n < 0:
+        raise ValueError, "n must be non-negative"
+    else:
+        return n * factorial(n - 1) if n else 1
+
+# the spec
+with describe("The factorial function") as it:
+
+    with it("is defined at zero") as then:
+        then(factorial(0)).should.be(1)
+
+    with it("rejects a negative argument") as then:
+        then(lambda: factorial(-1)).should.throw(ValueError)
+
+    with it("yields 720 if input is 6") as then:
+        then(factorial(6)).should.be(720)
+
+    with it("grows fast") as then:
+        then(factorial(100)).should > 100000
+
+
+
+done(exit = False)
+print "END OF EXAMPLE"
+print
+
+# ------------------------------------------------------------------------------
+
 
 with describe("A Feature") as it:
 
