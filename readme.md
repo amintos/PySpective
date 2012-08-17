@@ -57,14 +57,12 @@ with describe("A Feature") as it:
 	with it("behaves this way") as then:
 	
 		# should_not for denying any expectation:
-		
 		then('abc').should_not.be('ABC')
 		then(lambda: 42 / 7).should_not.throw(ZeroDivisionError)
 ```
 
 ```python
 		# Comparison operators:
-		
 		then(42).should > 23
 		then(42).should < 666
 		then(42).should >= 42
@@ -73,31 +71,26 @@ with describe("A Feature") as it:
 
 ```python
 		# Boolean statements
-		
 		then(isinstance(42, int)).should.hold()
 ```
 
 ```python
 		# Duck Typing
-		
 		then('a string').should.have('join')		
 ```
 
 ```python
 		# Collection checking
-		
 		then([1, 2, 3]).should.contain(1)
 ```
 
 ```python
 		# Expecting exceptions
-		
 		then(lambda: 1 / 0).should.throw(ZeroDivisionError)
 ```
 
 ```python
 		# RegEx matching
-		
 		then("a string").should.match("^a")
 ```
 
